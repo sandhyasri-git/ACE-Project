@@ -33,34 +33,7 @@ public class EducationalDAOImpl implements EducationalDAO {
 			return false;
 		}
 	}
-	public boolean deleteEducationDetails(EducationalDetails edetails) {
-		try
-		{
-			Session session=sessionFactory.getCurrentSession();
-			session.delete(edetails);
-			return true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			System.out.println("educational details cannot be deleted");
-			return false;
-		}
-	}
-	public boolean updateEducationalDetails(EducationalDetails edetails) {
-		try
-		{
-			Session session=sessionFactory.getCurrentSession();
-			session.update(edetails);
-			return true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			System.out.println(" cannot be updated");
-			return false;
-		}
-	}
+	
 	public List<EducationalDetails> list() {
 		try
 		{
@@ -76,6 +49,16 @@ public class EducationalDAOImpl implements EducationalDAO {
 		catch(Exception e)
 		{
 			System.out.println("Cannot retrieve educational details");
+			return null;
+		}
+	}
+	public EducationalDetails getByPersonalDetailsId(Integer id) {
+		try {
+			return sessionFactory.getCurrentSession().createQuery("From EducationalDetails where pdetails_userid=:id",EducationalDetails.class)
+			.setParameter("id", id)
+			.getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

@@ -18,65 +18,57 @@ public class PersonalDAOImpl implements PersonalDAO {
 
 	@Autowired
 	SessionFactory sessionFactory;
+
 	public boolean registerPersonalDetails(PersonalDetails pdetails) {
-		try
-		{
+		try {
 			Session session = sessionFactory.getCurrentSession();
 			session.save(pdetails);
 			return true;
 		}
-		
-		catch(Exception e)
-		{
+
+		catch (Exception e) {
 			return false;
 		}
 	}
-	public boolean deletePersonalDetails(PersonalDetails pdetails) {
-		try
-		{
-			Session session=sessionFactory.getCurrentSession();
-			session.delete(pdetails);
-			return true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			System.out.println("PersonalDetails cannot be deleted");
-			return false;
-		}
-	}
-	public boolean updatePersonalDetails(PersonalDetails pdetails) {
-		try
-		{
-			Session session=sessionFactory.getCurrentSession();
-			session.update(pdetails);
-			return true;
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			System.out.println(" cannot be updated");
-			return false;
-		}
-	}
+
+	
+
 	public List<PersonalDetails> list() {
-		try
-		{
-		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from PersonalDetails");
-		
-		List<PersonalDetails> list = (List<PersonalDetails>) query.list();
-		session.close();
-		
-		return list;
+		try {
+			Session session = sessionFactory.openSession();
+			Query query = session.createQuery("from PersonalDetails");
+
+			List<PersonalDetails> list = (List<PersonalDetails>) query.list();
+			session.close();
+
+			return list;
 		}
-		
-		catch(Exception e)
-		{
+
+		catch (Exception e) {
 			System.out.println("Cannot retrieve Personal Details");
 			return null;
 		}
 
 	}
 
+	public PersonalDetails getWithRegId(Integer regId) {
+		try {
+			return sessionFactory.getCurrentSession()
+					.createQuery("From PersonalDetails where regdetails_userid=:regId", PersonalDetails.class)
+					.setParameter("regId", regId).getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	public PersonalDetails get(Integer userId) {
+		try {
+			return sessionFactory.getCurrentSession().get(PersonalDetails.class, userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }

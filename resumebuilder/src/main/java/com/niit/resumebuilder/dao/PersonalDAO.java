@@ -9,11 +9,13 @@ public interface PersonalDAO {
 
 	public boolean registerPersonalDetails(PersonalDetails pdetails);
 	
-	public boolean deletePersonalDetails(PersonalDetails pdetails);
 	
-	public boolean updatePersonalDetails(PersonalDetails pdetails);
 	
 	public List<PersonalDetails> list();
+	
+	public PersonalDetails getWithRegId(Integer regId);
+	
+	public PersonalDetails get(Integer userId);
 
 
 }

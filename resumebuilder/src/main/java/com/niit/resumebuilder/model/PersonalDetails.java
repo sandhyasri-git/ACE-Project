@@ -36,17 +36,21 @@ public class PersonalDetails {
 	@OneToOne
 	private RegistrationDetails regdetails;
 	
+	
+	
+	@OneToMany(mappedBy = "pdetails", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private List<EducationalDetails> edndetails = new ArrayList<EducationalDetails>();
+
+	@OneToMany(mappedBy = "pdetails", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private List<ExperienceDetails> expdetails = new ArrayList<ExperienceDetails>();
+	
 	public RegistrationDetails getRegdetails() {
 		return regdetails;
 	}
 	public void setRegdetails(RegistrationDetails regdetails) {
 		this.regdetails = regdetails;
 	}
-	@OneToMany(mappedBy = "pdetails", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    private List<EducationalDetails> edndetails = new ArrayList<EducationalDetails>();
-
-	@OneToMany(mappedBy = "pdetails", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    private List<ExperienceDetails> expdetails = new ArrayList<ExperienceDetails>();
+	
 	
 	public List<ExperienceDetails> getExpdetails() {
 		return expdetails;

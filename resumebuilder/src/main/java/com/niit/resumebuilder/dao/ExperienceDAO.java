@@ -9,11 +9,13 @@ public interface ExperienceDAO {
 	
 	public boolean registerExperience(ExperienceDetails experience);
 	
-public boolean deleteExperienceDetails(ExperienceDetails expdetails);
-	
-	public boolean updateExperienceDetails(ExperienceDetails edetails);
+
 	
 	public List<ExperienceDetails> list();
+	
+	public ExperienceDetails getWithPersonalDetailsId(Integer pid);
+	
+	public ExperienceDetails get(Integer id);
 
 
 

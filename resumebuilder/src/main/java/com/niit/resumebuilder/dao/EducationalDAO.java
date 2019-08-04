@@ -7,11 +7,12 @@ import com.niit.resumebuilder.model.EducationalDetails;
 public interface EducationalDAO {
 
 	public boolean registerEducationDetails(EducationalDetails edetails);
-	public boolean deleteEducationDetails(EducationalDetails edetails);
 	
-	public boolean updateEducationalDetails(EducationalDetails edetails);
 	
 	public List<EducationalDetails> list();
+	
+	
+	public EducationalDetails getByPersonalDetailsId(Integer Id);
 
 
 }
