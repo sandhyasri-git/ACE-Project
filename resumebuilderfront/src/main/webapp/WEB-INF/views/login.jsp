@@ -9,6 +9,7 @@
 
 	<div class="container">
 		<div class="wrapper">
+			<!-- <form action="check" method="post" name="Login_Form" -->
 			<form action="perform_login" method="post" name="Login_Form"
 				class="form-signin">
 				<div class="row text-center bol">
@@ -22,7 +23,7 @@
 				<div class="input-group">
 					<span class="input-group-addon" id="sizing-addon1"> <i
 						class="fa fa-user"></i>
-					</span> <input type="email" class="form-control" name="email"
+					</span> <input type="email" class="form-control" name="emailId"
 						placeholder="abc@xxx.com" required />
 				</div>
 				<div class="input-group">
